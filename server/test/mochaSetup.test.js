@@ -5,9 +5,16 @@
  * stay within the '${ROOT}/test' folder.
  */
 
-const app = require("../server");
+const app = require('../server');
+const db = require('../db');
+const { clearDatabase } = require('./test.helpers');
 
 before(async function () {
   this.timeout(5000);
   await app.isReadyPromise;
+  await clearDatabase(db);
+});
+
+afterEach(async function () {
+  await clearDatabase(db);
 });

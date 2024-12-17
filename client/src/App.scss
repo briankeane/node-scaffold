@@ -1,0 +1,13 @@
+@import "./scss/colors.scss";
+@import "./scss/breakpoints.scss";
+@import "./scss/mixins.scss";
+
+.common-wrapper {
+    max-width: 95%;
+    margin: auto;
+    @include respond-to(wide) {
+        max-width: 1680px;
+    }
+    
+
+}
