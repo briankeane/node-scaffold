@@ -1,0 +1,66 @@
+@import "../../scss/colors.scss";
+@import "../../scss/mixins.scss";
+.audio-block-page {
+    margin-bottom: 20px;
+    &__actions {
+        display: flex;
+        button {
+            & + button {
+                margin-left: 10px;
+            }
+        }
+    }
+
+    &__action-controls {
+        display: flex;
+        margin-bottom: 20px;
+    }
+    &__action-block {
+        background-color: $light-grey;
+        box-shadow: 5px 5px 10px -6px $dark-grey;
+        align-items: center;
+        padding: 20px;
+        margin: 0 10px 10px 0;
+        border-radius: 5px;
+
+        &--mark {
+            display: block;
+        }
+
+        &--label {
+            margin: 0 0 10px 0;
+            display: inline-block;
+        }
+        &--value {
+            display: inline-block;
+            background-color: $grey;
+            border-radius: 5px;
+            padding: 8px;
+            margin: 0;
+            min-width: 100px;
+        }
+
+        button {
+            font-size: .8em;
+            margin-top: 10px;
+            @include respond-to(large) {
+                margin-top: 0;
+                margin-left: 10px;
+            }
+        }
+    }
+
+    &__fields {
+        .MuiFormControl-root {
+            margin-bottom: 20px;
+            display: block;
+        }
+    }
+    &__details {
+
+
+        &--title {
+            color: $blue;
+        }
+    }
+}

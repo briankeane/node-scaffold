@@ -1,9 +1,8 @@
-// const { USER_CREATED } = require("./events");
+const { USER_CREATED } = require('./events');
 const eventStream = require('./index.js');
 const logger = require('../../logger');
 const db = require('../../db');
 const lib = require('../lib');
-const playlistGenerator = require('../playlists/playlistGenerator');
 
 /*
  * When a user is created, created their songs and StationSongs
@@ -20,7 +19,7 @@ const playlistGenerator = require('../playlists/playlistGenerator');
  * Api
  */
 const subscribe = () => {
-  eventStream.allEvents.subscribe(USER_CREATED, onUserCreated);
+  // eventStream.allEvents.subscribe(USER_CREATED, onUserCreated);
 };
 
 module.exports = {

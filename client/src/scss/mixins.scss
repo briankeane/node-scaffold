@@ -1,0 +1,101 @@
+// Mixin to manage responsive breakpoints 
+// @param {String} $breakpoint - Breakpoint name
+// @require $breakpoints
+@import './breakpoints.scss';
+
+@mixin respond-to($breakpoint) {
+
+    // If the key exists in the map
+    @if map-has-key($breakpoints, $breakpoint) {
+
+        // Prints a media query based on the value
+        @media #{inspect(map-get($breakpoints, $breakpoint))} {
+            @content;
+        }
+
+    }
+
+    @else {
+
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. Available breakpoints are: #{map-keys($breakpoints)}.";
+    }
+}
+
+@mixin boxEdgeMark() {
+    &:after {
+        content: '';
+        width: 14px;
+        height: 30px;
+        background-color: red;
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: -10px;
+        transform: rotate(45deg);
+    }
+}
+
+@mixin tileShadow() {
+    box-shadow: 0px 3px 8px 1px $shadow-gray
+}
+
+
+@mixin iconArrow($direction, $size) {
+    margin: 0 10px;
+    display: inline-block;
+    height: 12px;
+    position: relative;
+    width: 12px;
+    text-indent: -9999px;
+    overflow: hidden;
+
+    @if $direction =='prev' {
+        transform: rotate(135deg);
+    }
+
+    @if $direction =='next' {
+        transform: rotate(-45deg);
+    }
+
+    &:after {
+        content: "";
+        border-color: $dark-blue;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        border-right-style: solid;
+        border-right-width: 2px;
+        display: inline-block;
+        left: 0;
+        position: absolute;
+        top: 0;
+
+        @if $size =='small' {
+            height: 8px;
+            width: 8px;
+        }
+
+        @if $size =='medium' {
+            height: 12px;
+            width: 12px;
+        }
+    }
+}
+
+@mixin iconCheckmark() {
+    display: inline-block;
+    transform: rotate(45deg);
+    height: 14px;
+    width: 8px;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+}
+
+@mixin unstyledButton() {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
